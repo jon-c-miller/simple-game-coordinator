@@ -16,7 +16,7 @@ public class ParticleActivator : MonoBehaviour
     {
         if (Input.GetKeyDown(explosionKey))
         {
-            GameCoordinator.Instance.RequestEffect(ParticleIDs.Explosion);
+            GameCoordinator.Instance.RequestEffect(ParticleIDs.Explosion).ISetActive();
         }
         else if (Input.GetKeyDown(sparksEnableKey))
         {

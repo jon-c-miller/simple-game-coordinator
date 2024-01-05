@@ -19,7 +19,6 @@ public class ParticleManager : MonoBehaviour
         switch (effect)
         {
             case ParticleIDs.Sparks:
-                // Debug.Log($"sparks has {sparks.Count} items in pool");
                 if (sparks.Count < 1)
                     AddEffect(effect);
                 newEffect = sparks.Dequeue();
