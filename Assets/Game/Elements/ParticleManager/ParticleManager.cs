@@ -88,6 +88,8 @@ public class ParticleManager : MonoBehaviour
             AddEffect(ParticleIDs.Sparks);
             AddEffect(ParticleIDs.Explosion);
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void OnEnable() => ParticleEffect.OnReturnEffect += ReturnEffect;

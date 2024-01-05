@@ -21,6 +21,8 @@ public class SceneManager : MonoBehaviour
     }
 
     public void NavigateToSpecificScene(SceneIDs scene) => UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scene.ToString());
+
+    public void Awake() => DontDestroyOnLoad(gameObject);
 }
 
 // These should be identical to the scene filenames
