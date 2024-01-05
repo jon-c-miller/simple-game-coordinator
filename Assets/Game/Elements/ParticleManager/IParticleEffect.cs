@@ -2,7 +2,8 @@
 public interface IParticleEffect
 {
     UnityEngine.ParticleSystem IEffect { get; }
-    void IReturnEffect();
+    void ISetActive();
+    void ISetInactive();
     void ISetParent(UnityEngine.Transform newParent);
     void ISetPosition(UnityEngine.Vector3 newPosition);
 }

@@ -12,15 +12,25 @@ public class ParticleEffect : MonoBehaviour, IParticleEffect
 
     public ParticleSystem IEffect => effect;
 
+    public void ISetActive()
+    {
+        gameObject.SetActive(true);
+        Debug.Log($"Setting active...");
+        effect.Play(true);
+    }
+
+    public void ISetInactive()
+    {
+        effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        // effect.Clear();
+        Debug.Log($"Setting inactive...");
+    }
+
     public void ISetParent(Transform newParent) => transform.SetParent(newParent);
 
     public void ISetPosition(Vector3 newPosition) => transform.localPosition = newPosition;
 
-    public void IReturnEffect()
-    {
-        OnReturnEffect?.Invoke(this, effectType);
-        gameObject.SetActive(false);
-    }
-
     void Awake() => TryGetComponent(out effect);
+
+    void OnDisable() => OnReturnEffect?.Invoke(this, effectType);
 }

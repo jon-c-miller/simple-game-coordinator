@@ -10,22 +10,50 @@ public class ParticleManager : MonoBehaviour
     Queue<IParticleEffect> sparks = new();
     Queue<IParticleEffect> explosions = new();
 
-    public IParticleEffect GetParticleEffect(ParticleIDs effect)
+    public IParticleEffect GetParticleEffect(ParticleIDs effect) => TryDequeue(effect);
+
+    IParticleEffect TryDequeue(ParticleIDs effect)
     {
         IParticleEffect newEffect = null;
 
         switch (effect)
         {
             case ParticleIDs.Sparks:
+                // Debug.Log($"sparks has {sparks.Count} items in pool");
+                if (sparks.Count < 1)
+                    AddEffect(effect);
                 newEffect = sparks.Dequeue();
                 break;
 
             case ParticleIDs.Explosion:
+                if (explosions.Count < 1)
+                    AddEffect(effect);
                 newEffect = explosions.Dequeue();
                 break;
         }
 
         return newEffect;
+    }
+
+    void AddEffect(ParticleIDs id)
+    {
+        ParticleEffect newEffect = null;
+
+        // Add a new effect to the queue, parented under the pool object
+        switch (id)
+        {
+            case ParticleIDs.Sparks:
+                newEffect = Instantiate(particles.SparksPF, Vector3.zero, Quaternion.identity, pool);
+                sparks.Enqueue(newEffect);
+                break;
+
+            case ParticleIDs.Explosion:
+                newEffect = Instantiate(particles.ExplosionPF, Vector3.zero, Quaternion.identity, pool);
+                explosions.Enqueue(newEffect);
+                break;
+        }
+
+        newEffect.gameObject.SetActive(false);
     }
 
     void ReturnEffect(IParticleEffect effect, ParticleIDs id)

@@ -21,10 +21,11 @@ public class ParticleActivator : MonoBehaviour
         else if (Input.GetKeyDown(sparksEnableKey))
         {
             retrievedSparks = GameCoordinator.Instance.RequestEffect(ParticleIDs.Sparks);
+            retrievedSparks.ISetActive();
         }
         else if (Input.GetKeyDown(sparksDisableKey))
         {
-            retrievedSparks?.IReturnEffect();
+            retrievedSparks?.ISetInactive();
         }
         else if (Input.GetKeyDown(sparksReparentKey))
         {
