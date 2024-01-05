@@ -15,5 +15,7 @@ public class SceneActivator : MonoBehaviour
             GameCoordinator.Instance.RequestSceneIncrement(false);
         else if (Input.GetKeyDown(nextSceneKey))
             GameCoordinator.Instance.RequestSceneIncrement(true);
+        else if (Input.GetKeyDown(specificSceneKey))
+            GameCoordinator.Instance.RequestSpecificScene(specificSceneToLoad);
     }
 }

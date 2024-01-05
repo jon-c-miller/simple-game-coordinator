@@ -34,6 +34,11 @@ public class GameCoordinator : MonoBehaviour
             sceneManager.IncrementActiveScene(nextScene);
     }
 
+    public void RequestSpecificScene(SceneIDs scene)
+    {
+        if (sceneManager != null)
+            sceneManager.NavigateToSpecificScene(scene);
+    }
 
     
     public static GameCoordinator Instance { get; private set; }
