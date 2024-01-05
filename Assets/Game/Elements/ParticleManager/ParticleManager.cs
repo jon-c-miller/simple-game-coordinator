@@ -32,6 +32,10 @@ public class ParticleManager : MonoBehaviour
                 break;
         }
 
+        // Reset the parent and position before dispatching effect
+        newEffect?.ISetParent(pool);
+        newEffect?.ISetPosition(Vector3.zero);
+
         return newEffect;
     }
 

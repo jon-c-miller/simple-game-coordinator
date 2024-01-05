@@ -15,18 +15,20 @@ public class ParticleEffect : MonoBehaviour, IParticleEffect
     public void ISetActive()
     {
         gameObject.SetActive(true);
-        Debug.Log($"Setting active...");
         effect.Play(true);
     }
 
     public void ISetInactive()
     {
+        // Particle system's Stop Action being set to Disable disables this object when the current particles are done 
         effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        // effect.Clear();
-        Debug.Log($"Setting inactive...");
     }
 
-    public void ISetParent(Transform newParent) => transform.SetParent(newParent);
+    public void ISetParent(Transform newParent)
+    {
+        transform.SetParent(newParent);
+        transform.localPosition = Vector3.zero;
+    }
 
     public void ISetPosition(Vector3 newPosition) => transform.localPosition = newPosition;
 
