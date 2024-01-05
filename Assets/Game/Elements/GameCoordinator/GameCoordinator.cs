@@ -7,6 +7,7 @@ public class GameCoordinator : MonoBehaviour
     
     [SerializeField] SoundManager soundManager;
     [SerializeField] ParticleManager particleManager;
+    [SerializeField] SceneManager sceneManager;
 
 
     // Methods for common commands that will be accessed by the rest of the codebase
@@ -26,6 +27,13 @@ public class GameCoordinator : MonoBehaviour
 
         return newEffect;
     }
+
+    public void RequestSceneIncrement(bool nextScene)
+    {
+        if (sceneManager != null)
+            sceneManager.IncrementActiveScene(nextScene);
+    }
+
 
     
     public static GameCoordinator Instance { get; private set; }
