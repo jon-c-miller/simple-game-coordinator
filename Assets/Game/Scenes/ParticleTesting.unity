@@ -205,9 +205,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 783577572}
+  - component: {fileID: 783577575}
   - component: {fileID: 783577574}
-  - component: {fileID: 783577571}
-  - component: {fileID: 783577573}
   m_Layer: 0
   m_Name: TestActivator
   m_TagString: Untagged
@@ -215,20 +214,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &783577571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783577570}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386acfc920b43994eb3ee315726cc751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pageTurnKey: 49
-  menuNavigationKey: 50
 --- !u!4 &783577572
 Transform:
   m_ObjectHideFlags: 0
@@ -245,14 +230,6 @@ Transform:
   - {fileID: 1197779243}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &783577573
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783577570}
-  m_Enabled: 1
 --- !u!114 &783577574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +247,22 @@ MonoBehaviour:
   sparksDisableKey: 51
   sparksReparentKey: 52
   otherObject: {fileID: 1197779243}
+--- !u!114 &783577575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783577570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb6e111610530b4e80900d3259a9bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneKey: 101
+  previousSceneKey: 113
+  specificSceneKey: 32
+  specificSceneToLoad: 0
 --- !u!1 &1197779242
 GameObject:
   m_ObjectHideFlags: 0
