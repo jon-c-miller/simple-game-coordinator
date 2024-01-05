@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
                 break;
 
             case SoundIDs.PageTurn:
-                sounds.PageTurn.Play();
+                sounds.PageTurn.PlayOneShot(sounds.PageTurnClip);
                 break;
         }
     }
