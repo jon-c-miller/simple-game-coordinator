@@ -32,6 +32,14 @@ public class GameCoordinator : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (Instance != null)
+        {
+            Destroy(gameObject);            // Destroy self if singleton already present
+        }
+        else
+        {
+            Instance = this;                // Assign self if Instance is null
+            DontDestroyOnLoad(gameObject);  // Preserve self on reload
+        }
     }
 }
