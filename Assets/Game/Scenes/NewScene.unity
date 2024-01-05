@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManager: {fileID: 155249535}
+  particleManager: {fileID: 1468097221}
 --- !u!4 &1200832321
 Transform:
   m_ObjectHideFlags: 0

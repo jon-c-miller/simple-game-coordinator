@@ -7,21 +7,21 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] Particles particles = new();
     [HideInInspector] Transform pool;
 
-    public Queue<IParticleEffect> Sparks = new();
-    public Queue<IParticleEffect> Explosions = new();
+    Queue<IParticleEffect> sparks = new();
+    Queue<IParticleEffect> explosions = new();
 
-    public IParticleEffect GetParticleEffect(ParticleIDs effect, Transform parent)
+    public IParticleEffect GetParticleEffect(ParticleIDs effect)
     {
         IParticleEffect newEffect = null;
 
         switch (effect)
         {
             case ParticleIDs.Sparks:
-                newEffect = Sparks.Dequeue();
+                newEffect = sparks.Dequeue();
                 break;
 
             case ParticleIDs.Explosion:
-                newEffect = Explosions.Dequeue();
+                newEffect = explosions.Dequeue();
                 break;
         }
 
@@ -33,11 +33,11 @@ public class ParticleManager : MonoBehaviour
         switch (id)
         {
             case ParticleIDs.Sparks:
-                Sparks.Enqueue(effect);
+                sparks.Enqueue(effect);
                 break;
 
             case ParticleIDs.Explosion:
-                Explosions.Enqueue(effect);
+                explosions.Enqueue(effect);
                 break;
         }
     }
