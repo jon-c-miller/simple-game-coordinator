@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/// <summary> Processes requests to play a sound. </summary>
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] Sounds sounds;

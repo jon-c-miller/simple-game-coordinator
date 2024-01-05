@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/// <summary> Provides a centralized, globally accessible API to request common game functionality. </summary>
 public class GameCoordinator : MonoBehaviour
 {
     // Initialized plain classes and editor refs to primary game systems (sound controller, etc.)

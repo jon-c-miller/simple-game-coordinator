@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/// <summary> Holds references to all sound assets. </summary> 
 [System.Serializable]
 public class Sounds
 {

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/// <summary> Acts as a proxy for areas of the codebase that would request sound playback through GameCoordinator. </summary>
 public class SoundActivator : MonoBehaviour
 {
     [SerializeField] KeyCode pageTurnKey = KeyCode.Alpha1;
