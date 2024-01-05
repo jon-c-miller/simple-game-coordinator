@@ -6,7 +6,21 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(SoundIDs sound)
     {
+        ActivateSoundBasedOnID(sound);
+    }
 
+    void ActivateSoundBasedOnID(SoundIDs sound)
+    {
+        switch (sound)
+        {
+            case SoundIDs.MenuNavigation:
+                sounds.MenuNavigation.Play();
+                break;
+
+            case SoundIDs.PageTurn:
+                sounds.PageTurn.Play();
+                break;
+        }
     }
 }
 
