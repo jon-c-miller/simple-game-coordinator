@@ -7,8 +7,10 @@ public class SceneManager : MonoBehaviour
     {
         // Note the current scene index and max scene count to limit incrementing to within scene build array
         int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCount;
+        int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings - 1;
         
+        Debug.Log($"increment scene... (current scene index = {currentSceneIndex} / scene count = {sceneCount})");
+
         // As directed by nextScene bool, go to next if index less than max; or previous if index greater than 0
         if (nextScene && sceneCount > currentSceneIndex)
         {
@@ -28,6 +30,7 @@ public class SceneManager : MonoBehaviour
 // These should be identical to the scene filenames
 public enum SceneIDs
 {
+    GameEntry,
     ParticleTesting,
     SoundTesting,
 }
