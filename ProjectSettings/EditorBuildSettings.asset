@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Game/Scenes/SoundTesting.unity
+    guid: 56c861cbfa57bec4abc77a26a4ead635
+  - enabled: 1
+    path: Assets/Game/Scenes/ParticleTesting.unity
+    guid: b2827f48c2b96c24799e6437e7a0a0fb
   m_configObjects: {}
