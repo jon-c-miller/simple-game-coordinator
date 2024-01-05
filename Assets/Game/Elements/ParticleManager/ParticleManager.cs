@@ -5,6 +5,8 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     [SerializeField] Particles particles = new();
+    [SerializeField] int preallocateAmount = 2;
+
     [HideInInspector] Transform pool;
 
     Queue<IParticleEffect> sparks = new();
@@ -79,6 +81,13 @@ public class ParticleManager : MonoBehaviour
         pool = new GameObject().transform;
         pool.SetParent(transform);
         pool.name = "EffectsPool";
+
+        // Preallocate pools
+        for (int i = 0; i < preallocateAmount; i++)
+        {
+            AddEffect(ParticleIDs.Sparks);
+            AddEffect(ParticleIDs.Explosion);
+        }
     }
 
     void OnEnable() => ParticleEffect.OnReturnEffect += ReturnEffect;
