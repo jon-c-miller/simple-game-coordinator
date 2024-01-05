@@ -40,19 +40,20 @@ public class GameCoordinator : MonoBehaviour
             sceneManager.NavigateToSpecificScene(scene);
     }
 
-    
+
     public static GameCoordinator Instance { get; private set; }
 
     void Awake()
     {
+        // Prevent reassigning an existing instance, as well as destruction on scene loading
         if (Instance != null)
         {
-            Destroy(gameObject);            // Destroy self if singleton already present
+            Destroy(gameObject);
         }
         else
         {
-            Instance = this;                // Assign self if Instance is null
-            DontDestroyOnLoad(gameObject);  // Preserve self on reload
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 }
