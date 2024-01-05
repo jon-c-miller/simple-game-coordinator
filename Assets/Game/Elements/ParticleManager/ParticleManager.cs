@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     [SerializeField] Particles particles = new();
-    [SerializeField] Transform pool;
+    [HideInInspector] Transform pool;
 
     public Queue<IParticleEffect> Sparks = new();
     public Queue<IParticleEffect> Explosions = new();
@@ -47,6 +47,7 @@ public class ParticleManager : MonoBehaviour
         // Set up a gameObject to hold pooled effects
         pool = new GameObject().transform;
         pool.SetParent(transform);
+        pool.name = "EffectsPool";
     }
 
     void OnEnable() => ParticleEffect.OnReturnEffect += ReturnEffect;
