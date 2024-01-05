@@ -53,9 +53,3 @@ public class ParticleManager : MonoBehaviour
 
     void OnDisable() => ParticleEffect.OnReturnEffect -= ReturnEffect;
 }
-
-public enum ParticleIDs
-{
-    Sparks,
-    Explosion,
-}

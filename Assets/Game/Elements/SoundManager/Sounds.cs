@@ -9,3 +9,9 @@ public class Sounds
     [Space]
     public AudioSource MenuNavigation;
 }
+
+public enum SoundIDs
+{
+    MenuNavigation,
+    PageTurn,
+}

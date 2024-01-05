@@ -20,9 +20,3 @@ public class SoundManager : MonoBehaviour
         }
     }
 }
-
-public enum SoundIDs
-{
-    MenuNavigation,
-    PageTurn,
-}

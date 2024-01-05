@@ -5,3 +5,9 @@ public class Particles
     public ParticleEffect SparksPF;
     public ParticleEffect ExplosionPF;
 }
+
+public enum ParticleIDs
+{
+    Sparks,
+    Explosion,
+}
