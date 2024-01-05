@@ -246,7 +246,7 @@ MonoBehaviour:
   sparksEnableKey: 50
   sparksDisableKey: 51
   sparksReparentKey: 52
-  sparksParent: {fileID: 1197779243}
+  otherObject: {fileID: 1197779243}
 --- !u!1 &1197779242
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197779243}
   m_Layer: 0
-  m_Name: ParentObject
+  m_Name: OtherObject
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -484,6 +484,7 @@ MonoBehaviour:
   particles:
     SparksPF: {fileID: 6407161948964030214, guid: f689c020f8e562b4f9b6ee7809e2c1e1, type: 3}
     ExplosionPF: {fileID: 6210279998141599523, guid: a4558c9ddbb73424a8272f377e48bcf9, type: 3}
+  preallocateAmount: 2
 --- !u!4 &1468097222
 Transform:
   m_ObjectHideFlags: 0
