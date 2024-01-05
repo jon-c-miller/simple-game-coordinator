@@ -19,6 +19,4 @@ public class SoundManager : MonoBehaviour
                 break;
         }
     }
-
-    public void Awake() => DontDestroyOnLoad(gameObject);
 }
