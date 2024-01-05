@@ -9,15 +9,15 @@ public class SceneManager : MonoBehaviour
         int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings - 1;
         
-        Debug.Log($"increment scene... (current scene index = {currentSceneIndex} / scene count = {sceneCount})");
-
         // As directed by nextScene bool, go to next if index less than max; or previous if index greater than 0
         if (nextScene && sceneCount > currentSceneIndex)
         {
+            GameCoordinator.Instance.RequestSound(SoundIDs.PageTurn);
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(currentSceneIndex + 1);
         }
         else if (!nextScene && currentSceneIndex > 0)
         {
+            GameCoordinator.Instance.RequestSound(SoundIDs.PageTurn);
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(currentSceneIndex - 1);
         }
     }
