@@ -19,8 +19,11 @@ public class SceneManager : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(currentSceneIndex - 1);
         }
     }
+
+    public void NavigateToSpecificScene(SceneIDs scene) => UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scene.ToString());
 }
 
+// These should be identical to the scene filenames
 public enum SceneIDs
 {
     ParticleTesting,
