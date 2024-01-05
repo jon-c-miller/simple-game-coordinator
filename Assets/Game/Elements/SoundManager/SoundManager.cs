@@ -7,11 +7,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(SoundIDs sound)
     {
-        ActivateSoundBasedOnID(sound);
-    }
-
-    void ActivateSoundBasedOnID(SoundIDs sound)
-    {
         Debug.Log($"Playing sound {sound}...");
         switch (sound)
         {
