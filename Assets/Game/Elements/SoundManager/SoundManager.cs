@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
 
     void ActivateSoundBasedOnID(SoundIDs sound)
     {
+        Debug.Log($"Playing sound {sound}...");
         switch (sound)
         {
             case SoundIDs.MenuNavigation:
