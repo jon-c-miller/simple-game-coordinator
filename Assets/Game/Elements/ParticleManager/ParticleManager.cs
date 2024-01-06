@@ -49,16 +49,14 @@ public class ParticleManager : MonoBehaviour
         {
             case ParticleIDs.Sparks:
                 newEffect = Instantiate(particles.SparksPF, Vector3.zero, Quaternion.identity, pool);
-                sparks.Enqueue(newEffect);
                 break;
 
             case ParticleIDs.Explosion:
                 newEffect = Instantiate(particles.ExplosionPF, Vector3.zero, Quaternion.identity, pool);
-                explosions.Enqueue(newEffect);
                 break;
         }
 
-        newEffect.gameObject.SetActive(false);
+        ReturnEffect(newEffect, id);
     }
 
     void ReturnEffect(IParticleEffect effect, ParticleIDs id)
