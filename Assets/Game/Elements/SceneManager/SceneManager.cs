@@ -16,12 +16,10 @@ public class SceneManager : MonoBehaviour
         // As directed by nextScene bool, go to next if index less than max; or previous if index greater than 0
         if (nextScene && sceneCount > currentSceneIndex)
         {
-            GameCoordinator.Instance.RequestSound(SoundIDs.PageTurn);
             loadProgress = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(currentSceneIndex + 1);
         }
         else if (!nextScene && currentSceneIndex > 0)
         {
-            GameCoordinator.Instance.RequestSound(SoundIDs.PageTurn);
             loadProgress = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(currentSceneIndex - 1);
         }
     }

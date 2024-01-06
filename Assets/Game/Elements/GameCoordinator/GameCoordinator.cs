@@ -33,6 +33,7 @@ public class GameCoordinator : MonoBehaviour
         if (sceneManager != null)
         {
             RunSceneRefreshActions();
+            RequestSound(SoundIDs.PageTurn);
             sceneManager.IncrementActiveScene(nextScene);
         }
     }
@@ -42,6 +43,7 @@ public class GameCoordinator : MonoBehaviour
         if (sceneManager != null)
         {
             RunSceneRefreshActions();
+            RequestSound(SoundIDs.PageTurn);
             sceneManager.NavigateToSpecificScene(scene);
         }
     }
