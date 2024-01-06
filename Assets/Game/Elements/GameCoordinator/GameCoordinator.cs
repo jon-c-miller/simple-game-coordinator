@@ -31,13 +31,24 @@ public class GameCoordinator : MonoBehaviour
     public void RequestSceneIncrement(bool nextScene)
     {
         if (sceneManager != null)
+        {
+            RunSceneRefreshActions();
             sceneManager.IncrementActiveScene(nextScene);
+        }
     }
 
     public void RequestSpecificScene(SceneIDs scene)
     {
         if (sceneManager != null)
+        {
+            RunSceneRefreshActions();
             sceneManager.NavigateToSpecificScene(scene);
+        }
+    }
+
+    public void RunSceneRefreshActions()
+    {
+        particleManager.OnSceneRefresh();
     }
 
 

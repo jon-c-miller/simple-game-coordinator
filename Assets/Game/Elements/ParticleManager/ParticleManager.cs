@@ -9,10 +9,17 @@ public class ParticleManager : MonoBehaviour
 
     [HideInInspector] Transform pool;
 
-    Queue<IParticleEffect> sparks = new();
-    Queue<IParticleEffect> explosions = new();
+    readonly Queue<IParticleEffect> sparks = new();
+    readonly Queue<IParticleEffect> explosions = new();
 
     public IParticleEffect GetParticleEffect(ParticleIDs effect) => TryDequeue(effect);
+
+    public void OnSceneRefresh()
+    {
+        sparks.Clear();
+        explosions.Clear();
+        PreallocatePools();
+    }
 
     IParticleEffect TryDequeue(ParticleIDs effect)
     {
@@ -73,20 +80,24 @@ public class ParticleManager : MonoBehaviour
         }
     }
 
-    void Awake()
+    void PreallocatePools()
     {
-        // Set up a gameObject to hold pooled effects
+        if (pool != null)
+            Destroy(pool.gameObject);
+
+        // Set up a new gameObject to hold pooled effects
         pool = new GameObject().transform;
         pool.SetParent(transform);
         pool.name = "EffectsPool";
 
-        // Preallocate pools
         for (int i = 0; i < preallocateAmount; i++)
         {
             AddEffect(ParticleIDs.Sparks);
             AddEffect(ParticleIDs.Explosion);
         }
     }
+
+    void Awake() => PreallocatePools();
 
     void OnEnable() => ParticleEffect.OnReturnEffect += ReturnEffect;
 
