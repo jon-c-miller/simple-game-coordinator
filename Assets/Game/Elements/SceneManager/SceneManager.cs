@@ -41,7 +41,7 @@ public class SceneManager : MonoBehaviour
     }
 }
 
-// These should be identical to the scene filenames
+// Should be identical to the scene filenames for easy conversion to strings for LoadSceneAsync
 public enum SceneIDs
 {
     GameEntry,

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2842fa91a894b94cb31b5d487cb8858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
+  particleAssets:
     SparksPF: {fileID: 6407161948964030214, guid: f689c020f8e562b4f9b6ee7809e2c1e1, type: 3}
     ExplosionPF: {fileID: 6210279998141599523, guid: a4558c9ddbb73424a8272f377e48bcf9, type: 3}
   preallocateAmount: 2

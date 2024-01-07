@@ -1,9 +1,9 @@
 using UnityEngine;
 
-/// <summary> Provides a centralized, globally accessible API to request common game functionality. </summary>
+/// <summary> Provides a centralized, globally accessible API to handle common system requests. </summary>
 public class GameCoordinator : MonoBehaviour
 {
-    // Initialized plain classes and editor refs to primary game systems (sound controller, etc.)
+    // Initialized plain classes and editor refs to primary game systems
     
     [SerializeField] SoundManager soundManager;
     [SerializeField] ParticleManager particleManager;
@@ -18,7 +18,7 @@ public class GameCoordinator : MonoBehaviour
             soundManager.PlaySound(sound);
     }
 
-    public IParticleEffect RequestEffect(ParticleIDs effect)
+    public IParticleEffect RequestParticleEffect(ParticleIDs effect)
     {
         IParticleEffect newEffect = null;
 
@@ -30,9 +30,10 @@ public class GameCoordinator : MonoBehaviour
 
     public void RequestSceneIncrement(bool nextScene)
     {
+        // Move to next scene or return to previous scene
         if (sceneManager != null)
         {
-            RunSceneRefreshActions();
+            RefreshManagers();
             RequestSound(SoundIDs.PageTurn);
             sceneManager.IncrementActiveScene(nextScene);
         }
@@ -42,15 +43,16 @@ public class GameCoordinator : MonoBehaviour
     {
         if (sceneManager != null)
         {
-            RunSceneRefreshActions();
+            RefreshManagers();
             RequestSound(SoundIDs.PageTurn);
             sceneManager.NavigateToSpecificScene(scene);
         }
     }
 
-    public void RunSceneRefreshActions()
+    void RefreshManagers()
     {
-        particleManager.OnSceneRefresh();
+        // Perform any logic that cleans up and resets managers
+        particleManager.OnSceneChange();
     }
 
 

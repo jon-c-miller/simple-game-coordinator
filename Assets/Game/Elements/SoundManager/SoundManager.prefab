@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2084a472e3d4e6d459ff15cb943b3438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
+  soundAssets:
     PageTurnClip: {fileID: 8300000, guid: 4c2bafec376e79d468a3ddad2a8f0609, type: 3}
     PageTurn: {fileID: 4720762565489171577}
     MenuNavigation: {fileID: 8549210007551336362}

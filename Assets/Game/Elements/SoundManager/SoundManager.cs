@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary> Processes requests to play a sound. </summary>
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] Sounds sounds = new();
+    [SerializeField] Sounds soundAssets = new();
 
     public void PlaySound(SoundIDs sound)
     {
@@ -11,11 +11,13 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case SoundIDs.MenuNavigation:
-                sounds.MenuNavigation.Play();
+                // Play a sound that can only have one playback at a time (playback reset if activated again before done)
+                soundAssets.MenuNavigation.Play();
                 break;
 
             case SoundIDs.PageTurn:
-                sounds.PageTurn.PlayOneShot(sounds.PageTurnClip);
+                // Play a sound that can have multiple concurrent playbacks
+                soundAssets.PageTurn.PlayOneShot(soundAssets.PageTurnClip);
                 break;
         }
     }

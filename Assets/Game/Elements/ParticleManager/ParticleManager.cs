@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary> Processes requests to fetch a particle effect. </summary>
 public class ParticleManager : MonoBehaviour
 {
-    [SerializeField] Particles particles = new();
+    [SerializeField] Particles particleAssets = new();
     [SerializeField] int preallocateAmount = 2;
 
     [HideInInspector] Transform pool;
@@ -14,7 +14,7 @@ public class ParticleManager : MonoBehaviour
 
     public IParticleEffect GetParticleEffect(ParticleIDs effect) => TryDequeue(effect);
 
-    public void OnSceneRefresh()
+    public void OnSceneChange()
     {
         sparks.Clear();
         explosions.Clear();
@@ -55,11 +55,11 @@ public class ParticleManager : MonoBehaviour
         switch (id)
         {
             case ParticleIDs.Sparks:
-                newEffect = Instantiate(particles.SparksPF, Vector3.zero, Quaternion.identity, pool);
+                newEffect = Instantiate(particleAssets.SparksPF, Vector3.zero, Quaternion.identity, pool);
                 break;
 
             case ParticleIDs.Explosion:
-                newEffect = Instantiate(particles.ExplosionPF, Vector3.zero, Quaternion.identity, pool);
+                newEffect = Instantiate(particleAssets.ExplosionPF, Vector3.zero, Quaternion.identity, pool);
                 break;
         }
 
