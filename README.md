@@ -20,13 +20,13 @@ A centralized API for handling requests that deal with common game functionality
 	<summary>Features</summary>
 	<ul><br>
 		<b>· Game Coordinator ·</b><br>
-		The heart of the project, this element provides a single access point to filter requests for common game functions, such as activating sounds and particle effects, switching scenes, etc., via method call. It is accessible from any class in the codebase, and DontDestroyOnLoad ensures that links to the managers it filters requests for are properly maintained between scenes. Logic that should always be activated in other managers upon a specific call can be added to that method itself (such as the internal call to RefreshManagers() for a fresh start when a successful scene change occurs).
+		The heart of the project, this element provides a single global access point to filter requests for common game functions that would normally need to be routed separately through independent managers, such as those that handle activating sounds and particle effects, inventory updates, and scene switching. In order to responsibly handle the security risks that a singleton poses, the various managers it keeps references to are kept private, and access to the API is strictly limited to specific method calls. To support scalability, the singleton itself is a partial class, which allows creating separate files to keep methods sorted by relevance, manager type, or whatever seems appropriate to the developer. This design prevents a situation where one file would otherwise grow to hold potentially thousands of methods as the game increases in size and complexity.
 		<br><br>
 		<b>· Particle Manager ·</b><br>
 		This element keeps an IParticleEffect pool for each type of particle effect, and filters effect requests by a ParticleIDs enum. A separate plain class holds references to all effect assets to keep the manager itself from becoming too crowded. Each particle effect prefab has the generic ParticleEffect component attached, which allows its ParticleIDs enum to be specified in the inspector. Support for updating an effect's position, transform, active status, etc. is extended by the IParticleEffect interface inherited by ParticleEffect, which limits and defines what behavior can be expected when effects are handled at runtime. For ease of identification and lookup of interface methods and properties, the convention of prefixing with I is extended to the interface's fields as well (ISetActive, ISetInactive, etc.).
 		<br><br>
 		<b>· Scene Manager ·</b><br>
-		This element handles requests to navigate to the previous/next scene, or to load a specific scene via a SceneIDs enum argument. Scenes are loaded asynchronously to mitigate gameplay effects from engine workload during transitions. A rudimentary progress indicator is also included, which rotates a simple canvas image as long as the load progress is underway. More developed implementations can easily integrate a canvas that fades out the screen between transitions.
+		This element handles requests to navigate to the previous/next scene, or to load a specific scene via a SceneIDs enum argument. Scenes are loaded asynchronously to mitigate gameplay effects from engine workload during transitions. A rudimentary progress indicator is also included, which rotates a simple canvas image as long as the load progress is underway. More developed implementations can easily integrate a canvas that fades out the screen between transitions. A DontDestroyOnLoad callback in GameCoordinator ensures that manager references are properly maintained between scenes.
 		<br><br>
 		<b>· Sound Manager ·</b><br>
 		This element handles requests to play a sound, including a sound intended to overlap with multiple concurrent playbacks. Sound requests are filtered by a SoundIDs enum argument. A separate plain class holds references to all sound assets to keep the manager itself from becoming too crowded, and audio sources are added as separate gameObject children. More advanced implementations can make use of queueing to prevent sound issues with the project's simultanous voice count threshold being exceeded (for rapid fire sounds, etc.).
@@ -37,7 +37,7 @@ A centralized API for handling requests that deal with common game functionality
 </details>
 
 <details>
-	<summary>Challenges and Learning</summary>
+	<summary>Reflection On Development</summary>
 	<ul><br>
 		<b>· Digging Deeper Into Particle Systems ·</b><br>
 		Though handling particle effects was secondary to the main focus of the project, there was nevertheless a great opportunity to become more adept at diagnosing and resolving more exotic quirks with Unity's particle system, particularly with regards to reactivation control and how they can be effectively handled with pooling.
