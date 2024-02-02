@@ -3,71 +3,24 @@ using UnityEngine;
 /// <summary> Provides a centralized, globally accessible API to handle common system requests. </summary>
 public class GameCoordinator : MonoBehaviour
 {
-    // Initialized plain classes and editor refs to primary game systems
-    
-    [SerializeField] SoundManager soundManager;
-    [SerializeField] ParticleManager particleManager;
-    [SerializeField] SceneManager sceneManager;
+    [SerializeField] GameAPI elements = new();
 
-
-    // Methods for common commands that will be accessed by the rest of the codebase
-    
-    public void RequestSound(SoundIDs sound)
-    {
-        if (soundManager != null)
-            soundManager.PlaySound(sound);
-    }
-
-    public IParticleEffect RequestParticleEffect(ParticleIDs effect)
-    {
-        IParticleEffect newEffect = null;
-
-        if (particleManager != null)
-            newEffect = particleManager.GetParticleEffect(effect);
-
-        return newEffect;
-    }
-
-    public void RequestSceneIncrement(bool nextScene)
-    {
-        // Move to next scene or return to previous scene
-        if (sceneManager != null)
-        {
-            RefreshManagers();
-            RequestSound(SoundIDs.PageTurn);
-            sceneManager.IncrementActiveScene(nextScene);
-        }
-    }
-
-    public void RequestSpecificScene(SceneIDs scene)
-    {
-        if (sceneManager != null)
-        {
-            RefreshManagers();
-            RequestSound(SoundIDs.PageTurn);
-            sceneManager.NavigateToSpecificScene(scene);
-        }
-    }
-
-    void RefreshManagers()
-    {
-        // Perform any logic that cleans up and resets managers
-        particleManager.OnSceneChange();
-    }
-
-
-    public static GameCoordinator Instance { get; private set; }
+    // A singleton of the partial API class, which is split into separate files based on system type
+    public static GameAPI Instance { get; private set; }
 
     void Awake()
     {
-        // Prevent reassigning an existing instance, as well as destruction on scene loading
         if (Instance != null)
         {
+            // Destroy this instance of GameAPI if there is already an Instance singleton
+            elements = null;
             Destroy(gameObject);
         }
         else
         {
-            Instance = this;
+            // Otherwise assign elements to the global Instance, initialize, and prevent destroy on scene load
+            Instance = elements;
+            Instance.InitializeAPI();
             DontDestroyOnLoad(gameObject);
         }
     }

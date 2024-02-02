@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ce214c374d9374aa0ce9738efcc932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 7427291099135667413}
-  particleManager: {fileID: 182722081688814453}
-  sceneManager: {fileID: 5268651450318600865}
+  elements:
+    particleManager: {fileID: 182722081688814453}
+    sceneManager: {fileID: 5268651450318600865}
+    soundManager: {fileID: 7427291099135667413}
 --- !u!81 &6572215662011452430
 AudioListener:
   m_ObjectHideFlags: 0
