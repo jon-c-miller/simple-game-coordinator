@@ -3,7 +3,7 @@
 A centralized API for handling requests that deal with common game functionality.
 
 <details>
-	<summary>Project Overview</summary>
+	<summary>Overview</summary>
 	<ul><br>
 		<b>· Core Direction ·</b><br>
 		The goal for this project was to design a game manager solution that was extensible, predictable, simple to access from the codebase, and easy to understand. To accomplish this, GameCoordinator uses the singleton pattern to handle ease of access, allowing any class to execute updates to the game system management classes (sound, particles, etc.). To help offset the fact that any class can access GameCoordinator, the facade pattern is used to shield the game's management classes from direct access by the rest of the codebase, providing only methods such as RequestSound() or RequestParticleEffect() for specific anticipated needs.
@@ -17,7 +17,7 @@ A centralized API for handling requests that deal with common game functionality
 </details>
 
 <details>
-	<summary>Features</summary>
+	<summary>Elements</summary>
 	<ul><br>
 		<b>· Game Coordinator ·</b><br>
 		The heart of the project, this element provides a single global access point to filter requests for common game functions that would normally need to be routed separately through independent managers, such as those that handle activating sounds and particle effects, inventory updates, and scene switching. In order to responsibly handle the security risks that a singleton poses, the various managers it keeps references to are kept private, and access to the API is strictly limited to specific method calls. To support scalability, the singleton itself is a partial class, which allows creating separate files to keep methods sorted by relevance, manager type, or whatever seems appropriate to the developer. This design prevents a situation where one file would otherwise grow to hold potentially thousands of methods as the game increases in size and complexity.
@@ -37,7 +37,7 @@ A centralized API for handling requests that deal with common game functionality
 </details>
 
 <details>
-	<summary>Reflection On Development</summary>
+	<summary>Development</summary>
 	<ul><br>
 		<b>· Digging Deeper Into Particle Systems ·</b><br>
 		Though handling particle effects was secondary to the main focus of the project, there was nevertheless a great opportunity to become more adept at diagnosing and resolving more exotic quirks with Unity's particle system, particularly with regards to reactivation control and how they can be effectively handled with pooling.
@@ -54,6 +54,11 @@ A centralized API for handling requests that deal with common game functionality
 		However, in a scenario where effects from the ParticleManager were reparented, they would be left behind in the scene they were in. ParticleEffect's OnDisable callback would return the effect's interface to the manager as intended when the level was unloaded, but the actual object would be destroyed on the scene change, causing object access errors when that interface was next dequeued.
 		<br><br>
 		This was ultimately an indication that more concrete steps needed to be taken to cleanup during scene changing, so logic was added to simply destroy and rebuild the manager's effect pools. This had the added benefit of keeping behavior predictable by ensuring that pools were returned to a base preallocated state rather than having an indeterminate and potentially enormous amount of entries in each pool superfluously carry over to the next scene.
+		<br><br>
+		<b>· Shrouding For Security ·</b><br>
+		Upon utilizing this project's infrastructure in a separate project, the original idea of having a central API was expanded upon and improved, taking the facade pattern one step further. Whereas the original system had managers calling <i>Game.Instance.SomeMethod()</i>, the improved system allows for the same call to be express as <i>Game.SomeMethod()</i>.
+		<br><br>
+		The trick to accomplishing this was to simply hide the singleton instance representing the Game class behind a corresponding dedicated public static method in the Game class. That static method then makes an internal call to the appropriate manager's method: <i>instance.managerReference.RelatedMethod()</i>. This cuts down on method calling syntax, and also prevents the game's critical API instance from being directly accessed by the codebase, reinforcing the purely method-based API paradigm.
 	</ul>
 </details>
 
