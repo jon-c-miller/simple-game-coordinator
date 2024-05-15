@@ -10,11 +10,11 @@ public class SoundActivator : MonoBehaviour
     {
         if (Input.GetKeyDown(pageTurnKey))
         {
-            GameCoordinator.Instance.RequestSound(SoundIDs.PageTurn);
+            Game.RequestSound(SoundIDs.PageTurn);
         }
         else if (Input.GetKeyDown(menuNavigationKey))
         {
-            GameCoordinator.Instance.RequestSound(SoundIDs.MenuNavigation);
+            Game.RequestSound(SoundIDs.MenuNavigation);
         }
     }
 }

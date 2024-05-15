@@ -17,14 +17,14 @@ public class ParticleActivator : MonoBehaviour
         if (Input.GetKeyDown(explosionKey))
         {
             // Simulates any scenario which requires an explosion at an object's position
-            IParticleEffect effect = GameCoordinator.Instance.RequestParticleEffect(ParticleIDs.Explosion);
+            IParticleEffect effect = Game.RequestParticleEffect(ParticleIDs.Explosion);
             effect.ISetPosition(otherObject.localPosition);
             effect.ISetActive();
         }
         else if (Input.GetKeyDown(sparksEnableKey))
         {
             // Simulates a scenario where an object (maybe a building in an RTS) references the effect for later dismissal
-            retrievedSparks = GameCoordinator.Instance.RequestParticleEffect(ParticleIDs.Sparks);
+            retrievedSparks = Game.RequestParticleEffect(ParticleIDs.Sparks);
             retrievedSparks.ISetActive();
         }
         else if (Input.GetKeyDown(sparksDisableKey))

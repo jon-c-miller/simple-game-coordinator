@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6213583385207400514}
-  - component: {fileID: 4760959287569280648}
+  - component: {fileID: 8865301271233332899}
   - component: {fileID: 6572215662011452430}
   m_Layer: 0
   m_Name: GameCoordinator
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 8032808741850197785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4760959287569280648
+--- !u!114 &8865301271233332899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,13 +45,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8393016249950890364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0ce214c374d9374aa0ce9738efcc932, type: 3}
+  m_Script: {fileID: 11500000, guid: 71c2a5c439f33f92bb7f5a142621a30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements:
-    particleManager: {fileID: 182722081688814453}
-    sceneManager: {fileID: 5268651450318600865}
-    soundManager: {fileID: 7427291099135667413}
+  particleManager: {fileID: 182722081688814453}
+  sceneManager: {fileID: 5268651450318600865}
+  soundManager: {fileID: 7427291099135667413}
 --- !u!81 &6572215662011452430
 AudioListener:
   m_ObjectHideFlags: 0

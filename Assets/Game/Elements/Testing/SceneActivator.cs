@@ -14,17 +14,17 @@ public class SceneActivator : MonoBehaviour
         if (Input.GetKeyDown(previousSceneKey))
         {
             // Simulates a scenario where the previous scene needs to be loaded
-            GameCoordinator.Instance.RequestSceneIncrement(false);
+            Game.RequestSceneIncrement(false);
         }
         else if (Input.GetKeyDown(nextSceneKey))
         {
             // Simulates a scenario where the next scene needs to be loaded
-            GameCoordinator.Instance.RequestSceneIncrement(true);
+            Game.RequestSceneIncrement(true);
         }
         else if (Input.GetKeyDown(specificSceneKey))
         {
             // Simulates a scenario where a specific given scene needs to be loaded
-            GameCoordinator.Instance.RequestSpecificScene(specificSceneToLoad);
+            Game.RequestSpecificScene(specificSceneToLoad);
         }
     }
 }
